@@ -57,7 +57,10 @@ RUN conda install --yes numpy scipy matplotlib pyqt lxml pandas h5py openpyxl
 # RUN pip install pybind11 pymetis mayavi
 
 # COPY (this is not extracting when built from vscode...)
-ADD daetools-1.9.0-gnu_linux-x86_64.tar.gz work/
+RUN wget https://ufpr.dl.sourceforge.net/project/daetools/daetools/1.9.0/daetools-1.9.0-gnu_linux-x86_64.tar.gz
+RUN tar zxvpf daetools-1.9.0-gnu_linux-x86_64.tar.gz && rm daetools-1.9.0-gnu_linux-x86_64.tar.gz \
+    && mv daetools-1.9.0-gnu_linux work/
+# ADD daetools-1.9.0-gnu_linux-x86_64.tar.gz work/
 
 # MISSING libfortran
 USER root
